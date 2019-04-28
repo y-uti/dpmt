@@ -40,8 +40,8 @@ class Mutex extends \Threaded
 
     private function unlockImpl()
     {
-        $ownerThreadId = \Thread::getCurrentThreadId();
-        if ($this->ownerThreadId === $ownerThreadId) {
+        $currentThreadId = \Thread::getCurrentThreadId();
+        if ($this->ownerThreadId === $currentThreadId) {
             $this->ownerThreadId = self::NOT_LOCKED;
             $this->notify();
             return true;
