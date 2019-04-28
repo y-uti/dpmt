@@ -5,7 +5,7 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 
 use YUti\Dpmt\Common\Mutex;
 
-class List_01_07_MyThread extends \Thread
+class List_01_07_UserThread extends \Thread
 {
     private $id;
     private $mutex;
