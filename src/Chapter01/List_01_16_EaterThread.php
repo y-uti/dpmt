@@ -26,7 +26,8 @@ class List_01_16_EaterThread extends \Thread
     private function eat1()
     {
         usleep(rand(0, 3000) * 1000);
-        $this->leftHand->synchronized(function () {
+        $this->leftHand->synchronized(
+            function () {
                 echo "{$this->name} takes up {$this->leftHand} (left).\n";
                 $this->eat2();
                 echo "{$this->name} puts down {$this->leftHand} (left).\n";
@@ -37,7 +38,8 @@ class List_01_16_EaterThread extends \Thread
     private function eat2()
     {
         usleep(rand(0, 500) * 1000);
-        $this->rightHand->synchronized(function () {
+        $this->rightHand->synchronized(
+            function () {
                 echo "{$this->name} takes up {$this->rightHand} (right).\n";
                 $this->eat3();
                 echo "{$this->name} puts down {$this->rightHand} (right).\n";
