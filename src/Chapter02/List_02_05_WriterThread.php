@@ -16,7 +16,11 @@ class List_02_05_WriterThread extends \Thread
     {
         for ($i = 0; ; $i++) {
             $this->array[$i] = $i;
-            $this->array->pop();
+            echo "Push $i\n";
+            usleep(100000 * rand(1, 5));
+            // $this->array->pop();
+            // echo "Pop $i\n";
+            // usleep(100000 * rand(1, 5));
         }
     }
 }

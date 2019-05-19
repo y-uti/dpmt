@@ -15,7 +15,12 @@ class List_02_06_ReaderThread extends \Thread
     public function run()
     {
         while (true) {
-            echo json_encode($this->array), PHP_EOL;
+            foreach ($this->array as $key => $value) {
+                echo "$key:$value,";
+                usleep(100000 * rand(1, 5));
+            }
+            echo "END\n";
+            usleep(100000 * rand(1, 5));
         }
     }
 }
