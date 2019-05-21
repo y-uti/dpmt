@@ -5,13 +5,13 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 
 class Mutex extends \Threaded
 {
-    private const NOT_LOCKED = -1;
-
+    private $locked;
     private $ownerThreadId;
 
     public function __construct()
     {
-        $this->ownerThreadId = self::NOT_LOCKED;
+        $this->locked = false;
+        $this->ownerThreadId = 0;
     }
 
     public function lock()
@@ -23,11 +23,13 @@ class Mutex extends \Threaded
 
     private function lockImpl()
     {
-        while ($this->ownerThreadId !== self::NOT_LOCKED) {
+        $currentThreadId = \Thread::getCurrentThreadId();
+
+        while ($this->locked && $this->ownerThreadId !== $currentThreadId) {
             $this->wait();
         }
 
-        $currentThreadId = \Thread::getCurrentThreadId();
+        $this->locked = true;
         $this->ownerThreadId = $currentThreadId;
     }
 
@@ -41,12 +43,12 @@ class Mutex extends \Threaded
     private function unlockImpl()
     {
         $currentThreadId = \Thread::getCurrentThreadId();
-        if ($this->ownerThreadId === $currentThreadId) {
-            $this->ownerThreadId = self::NOT_LOCKED;
-            $this->notify();
-            return true;
+
+        if (!$this->locked || $this->ownerThreadId !== $currentThreadId) {
+            return;
         }
 
-        return false;
+        $this->locked = false;
+        $this->ownerThreadId = 0;
     }
 }
