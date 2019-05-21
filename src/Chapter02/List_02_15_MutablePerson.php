@@ -52,7 +52,7 @@ class List_02_15_MutablePerson extends \Threaded
 
     private function getImmutablePersonImpl()
     {
-        return new ImmutablePerson($this);
+        return new List_02_16_ImmutablePerson($this);
     }
 
     public function getName()

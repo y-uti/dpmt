@@ -5,7 +5,7 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 
 class List_02_11_Main
 {
-    static $callCount = 10000000;
+    public static $callCount = 10000000;
 
     public static function main(array $argv)
     {

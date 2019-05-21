@@ -24,8 +24,8 @@ class List_02_13_Line extends \Threaded
 
     private function constructFromXYPair($startX, $startY, $endX, $endY)
     {
-        $this->start = new Point($startX, $startY);
-        $this->end = new Point($endX, $endY);
+        $this->start = new List_02_14_Point($startX, $startY);
+        $this->end = new List_02_14_Point($endX, $endY);
     }
 
     private function constructFromPoints($start, $end)

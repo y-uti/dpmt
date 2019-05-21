@@ -31,13 +31,13 @@ class List_02_16_ImmutablePerson extends \Threaded
     private function constructFromMutable($person)
     {
         $this->name = $person->getName();
-        usleep(1.0 * 1e6);
+        usleep(100000);
         $this->address = $person->getAddress();
     }
 
     public function getMutablePerson()
     {
-        return new MutablePerson($this);
+        return new List_02_15_MutablePerson($this);
     }
 
     public function getName()

@@ -16,7 +16,7 @@ class List_02_16_Main
         $thread = new List_02_16_UserThread($mutablePerson);
         $thread->start();
 
-        usleep(0.5 * 1e6);
+        usleep(500000);
 
         $mutablePerson->setPerson('Bobby', 'Brazil');
         echo $mutablePerson, PHP_EOL;
