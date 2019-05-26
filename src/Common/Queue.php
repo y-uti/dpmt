@@ -23,7 +23,7 @@ class Queue extends \Threaded
 
     public function offer($value)
     {
-        $this->data[$this->head++] = $value;
+        $this->data[$this->tail++] = $value;
     }
 
     public function peek()
@@ -32,7 +32,7 @@ class Queue extends \Threaded
             return null;
         }
 
-        return $this->data[$this->tail];
+        return $this->data[$this->head];
     }
 
     public function remove()
@@ -41,9 +41,9 @@ class Queue extends \Threaded
             return null;
         }
 
-        $tail = $this->tail++;
-        $value = $this->data[$tail];
-        unset($this->data[$tail]);
+        $head = $this->head++;
+        $value = $this->data[$head];
+        unset($this->data[$head]);
 
         return $value;
     }
