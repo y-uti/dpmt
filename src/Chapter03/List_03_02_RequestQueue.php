@@ -24,6 +24,7 @@ class List_03_02_RequestQueue extends \Threaded
         while ($this->queue->peek() === null) {
             $this->wait();
         }
+
         return $this->queue->remove();
     }
 
