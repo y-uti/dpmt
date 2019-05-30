@@ -14,16 +14,11 @@ class List_04_02_SaverThread extends \Thread
         $this->data = $data;
     }
 
-    public function getName()
-    {
-        return $this->name;
-    }
-
     public function run()
     {
         while (true) {
             $this->data->save();
-            usleep(1e6);
+            usleep(1000000);
         }
     }
 }

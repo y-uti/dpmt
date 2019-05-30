@@ -14,16 +14,11 @@ class List_04_03_ChangerThread extends \Thread
         $this->data = $data;
     }
 
-    public function getName()
-    {
-        return $this->name;
-    }
-
     public function run()
     {
         for ($i = 0; true; $i++) {
             $this->data->change("No. $i");
-            usleep(1e3 * rand(1, 1000));
+            usleep(1000 * rand(1, 1000));
             $this->data->save();
         }
     }

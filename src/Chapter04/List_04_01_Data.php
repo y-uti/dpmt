@@ -44,7 +44,7 @@ class List_04_01_Data extends \Threaded
 
     private function doSave()
     {
-        $name = \Thread::getCurrentThread()->getName();
-        echo "$name calls doSave, content = {$this->content}\n";
+        $threadId = \Thread::getCurrentThreadId();
+        echo "$threadId calls doSave, content = {$this->content}\n";
     }
 }
