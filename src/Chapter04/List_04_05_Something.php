@@ -5,7 +5,7 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 
 class List_04_05_Something extends \Threaded
 {
-    private $iniialized;
+    private $initialized;
 
     public function __construct()
     {
