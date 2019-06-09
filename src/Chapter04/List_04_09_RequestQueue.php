@@ -25,9 +25,9 @@ class List_04_09_RequestQueue extends \Threaded
 
     private function getRequestImpl()
     {
-        $start = microtime(true) * 1000000;
+        $start = (int) (microtime(true) * 1e6);
         while ($this->queue->peek() === null) {
-            $now = microtime(true) * 1000000;
+            $now = (int) (microtime(true) * 1e6);
             $rest = $this->timeout - ($now - $start);
             if ($rest <= 0) {
                 throw new List_04_08_LivenessException("rest = $rest, timeout = {$this->timeout}");

@@ -54,12 +54,12 @@ class List_04_10_BlockingQueue extends \Threaded
 
     private function removeImpl($timeout)
     {
-        $start = microtime(true) * 1000000;
+        $start = (int) (microtime(true) * 1e6);
         while ($this->queue->peek() === null) {
-            $now = microtime(true) * 1000000;
-            $rest = $this->timeout - ($now - $start);
+            $now = (int) (microtime(true) * 1e6);
+            $rest = $timeout - ($now - $start);
             if ($rest <= 0) {
-                throw new List_04_08_LivenessException("rest = $rest, timeout = {$this->timeout}");
+                throw new List_04_08_LivenessException("rest = $rest, timeout = $timeout");
             }
             $this->wait($rest);
         }
