@@ -22,4 +22,3 @@ class List_05_03_EaterThread extends \Thread
         }
     }
 }
-
