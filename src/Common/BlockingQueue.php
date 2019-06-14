@@ -7,9 +7,24 @@ class BlockingQueue extends \Threaded
 {
     private $queue;
 
-    public function __construct()
+    public function __construct($capacity = 0)
     {
-        $this->queue = new Queue();
+        $this->queue = new Queue($capacity);
+    }
+
+    public function count()
+    {
+        return $this->synchronized(\Closure::fromCallable([$this, 'countImpl']));
+    }
+
+    private function countImpl()
+    {
+        return $this->queye->count();
+    }
+
+    public function capacity()
+    {
+        return $this->queue->capacity();
     }
 
     public function isEmpty()
@@ -22,6 +37,16 @@ class BlockingQueue extends \Threaded
         return $this->queue->isEmpty();
     }
 
+    public function isFull()
+    {
+        return $this->synchronized(\Closure::fromCallable([$this, 'isFullImpl']));
+    }
+
+    private function isFullImpl()
+    {
+        return $this->queue->isFull();
+    }
+
     public function offer($value)
     {
         $this->synchronized(\Closure::fromCallable([$this, 'offerImpl']), $value);
@@ -29,6 +54,10 @@ class BlockingQueue extends \Threaded
 
     private function offerImpl($value)
     {
+        while ($this->isFullImpl()) {
+            $this->wait();
+        }
+
         $this->queue->offer($value);
         $this->notify();
     }
@@ -50,10 +79,13 @@ class BlockingQueue extends \Threaded
 
     private function removeImpl()
     {
-        while ($this->queue->peek() === null) {
+        while ($this->isEmptyImpl()) {
             $this->wait();
         }
 
-        return $this->queue->remove();
+        $value = $this->queue->remove();
+        $this->notify();
+
+        return $value;
     }
 }

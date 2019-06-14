@@ -5,25 +5,56 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 
 class Queue extends \Threaded
 {
+    private $capacity;
     private $data;
     private $head;
     private $tail;
-
-    public function __construct()
+    private $count;
+    
+    public function __construct($capacity = 0)
     {
+        $this->capacity = $capacity;
         $this->data = new \Volatile();
         $this->head = 0;
         $this->tail = 0;
+        $this->count = 0;
+    }
+
+    public function count()
+    {
+        return $this->count;
+    }
+
+    public function capacity()
+    {
+        return $this->capacity;
+    }
+
+    private function hasCapacity()
+    {
+        return $this->capacity > 0;
     }
 
     public function isEmpty()
     {
-        return $this->head === $this->tail;
+        return $this->count === 0;
+    }
+
+    public function isFull()
+    {
+        return $this->hasCapacity() && $this->count === $this->capacity;
     }
 
     public function offer($value)
     {
+        if ($this->isFull()) {
+            return null;
+        }
         $this->data[$this->tail++] = $value;
+        if ($this->hasCapacity()) {
+            $this->tail = $this->tail % $this->capacity;
+        }
+        $this->count++;
     }
 
     public function peek()
@@ -41,9 +72,13 @@ class Queue extends \Threaded
             return null;
         }
 
-        $head = $this->head++;
-        $value = $this->data[$head];
-        unset($this->data[$head]);
+        $value = $this->data[$this->head];
+        unset($this->data[$this->head]);
+        $this->head++;
+        if ($this->hasCapacity()) {
+            $this->head = $this->head % $this->capacity;
+        }
+        $this->count--;
 
         return $value;
     }
