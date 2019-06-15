@@ -3,7 +3,7 @@ namespace YUti\Dpmt\Chapter05;
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 
-class List_05_Ex08_Table extends \Threaded
+class List_05_11_Table extends \Threaded
 {
     private $buffer;
     private $head;

@@ -3,11 +3,11 @@ namespace YUti\Dpmt\Chapter05;
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 
-class List_05_Ex07_Main
+class List_05_10_Main
 {
     public static function main(array $argv)
     {
-        $host = new List_05_Ex07_Host();
+        $host = new List_05_10_Host();
 
         $thread = new class($host) extends \Thread {
             private $host;
@@ -29,5 +29,5 @@ class List_05_Ex07_Main
 }
 
 if (isset($argv)) {
-    List_05_Ex07_Main::main($argv);
+    List_05_10_Main::main($argv);
 }

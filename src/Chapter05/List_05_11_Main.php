@@ -3,11 +3,11 @@ namespace YUti\Dpmt\Chapter05;
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 
-class List_05_Ex08_Main
+class List_05_11_Main
 {
     public static function main(array $argv)
     {
-        $table = new List_05_Ex08_Table(3);
+        $table = new List_05_11_Table(3);
         $idManager = new List_05_02_MakerThreadIdManager();
 
         $threads = [];
@@ -18,10 +18,10 @@ class List_05_Ex08_Main
         $threads[] = new List_05_03_EaterThread('EaterThread-2', $table);
         $threads[] = new List_05_03_EaterThread('EaterThread-3', $table);
 
-        $threads[] = new List_05_Ex08_LazyThread('LazyThread-1', $table);
-        $threads[] = new List_05_Ex08_LazyThread('LazyThread-2', $table);
-        $threads[] = new List_05_Ex08_LazyThread('LazyThread-3', $table);
-        $threads[] = new List_05_Ex08_LazyThread('LazyThread-4', $table);
+        $threads[] = new List_05_11_LazyThread('LazyThread-1', $table);
+        $threads[] = new List_05_11_LazyThread('LazyThread-2', $table);
+        $threads[] = new List_05_11_LazyThread('LazyThread-3', $table);
+        $threads[] = new List_05_11_LazyThread('LazyThread-4', $table);
 
         foreach ($threads as $t) {
             $t->start();
@@ -30,5 +30,5 @@ class List_05_Ex08_Main
 }
 
 if (isset($argv)) {
-    List_05_Ex08_Main::main($argv);
+    List_05_11_Main::main($argv);
 }
