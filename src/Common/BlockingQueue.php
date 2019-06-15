@@ -19,7 +19,7 @@ class BlockingQueue extends \Threaded
 
     private function countImpl()
     {
-        return $this->queye->count();
+        return $this->queue->count();
     }
 
     public function capacity()
