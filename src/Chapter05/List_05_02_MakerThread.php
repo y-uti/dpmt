@@ -7,13 +7,13 @@ class List_05_02_MakerThread extends \Thread
 {
     private $name;
     private $table;
-    private $idManager;
+    private $counter;
 
-    public function __construct($name, $table, $idManager)
+    public function __construct($name, $table, $counter)
     {
         $this->name = $name;
         $this->table = $table;
-        $this->idManager = $idManager;
+        $this->counter = $counter;
     }
 
     public function run()
@@ -27,6 +27,6 @@ class List_05_02_MakerThread extends \Thread
 
     private function nextId()
     {
-        return $this->idManager->nextId();
+        return $this->counter->get();
     }
 }
