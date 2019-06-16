@@ -1,8 +1,6 @@
 <?php
 namespace YUti\Dpmt\Chapter02;
 
-require_once __DIR__ . '/../../vendor/autoload.php';
-
 class List_02_03_PrintPersonThread extends \Thread
 {
     private $person;

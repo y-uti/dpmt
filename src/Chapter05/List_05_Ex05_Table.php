@@ -1,8 +1,6 @@
 <?php
 namespace YUti\Dpmt\Chapter05;
 
-require_once __DIR__ . '/../../vendor/autoload.php';
-
 class List_05_Ex05_Table extends \Threaded
 {
     private $buffer;

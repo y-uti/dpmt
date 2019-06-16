@@ -1,8 +1,6 @@
 <?php
 namespace YUti\Dpmt\Chapter07;
 
-require_once __DIR__ . '/../../vendor/autoload.php';
-
 class List_07_03_Helper extends \Threaded
 {
     public function handle($count, $c)

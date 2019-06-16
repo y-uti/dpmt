@@ -1,8 +1,6 @@
 <?php
 namespace YUti\Dpmt\Chapter03;
 
-require_once __DIR__ . '/../../vendor/autoload.php';
-
 use YUti\Dpmt\Common\BlockingQueue;
 
 class List_03_06_RequestQueue extends \Threaded

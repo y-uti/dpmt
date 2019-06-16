@@ -1,8 +1,6 @@
 <?php
 namespace YUti\Dpmt\Chapter05;
 
-require_once __DIR__ . '/../../vendor/autoload.php';
-
 use YUti\Dpmt\Common\BlockingQueue;
 
 class List_05_05_Table extends BlockingQueue

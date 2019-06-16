@@ -1,8 +1,6 @@
 <?php
 namespace YUti\Dpmt\Chapter04;
 
-require_once __DIR__ . '/../../vendor/autoload.php';
-
 use YUti\Dpmt\Common\TimeoutException;
 
 class List_04_06_Host extends \Threaded

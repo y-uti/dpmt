@@ -1,8 +1,6 @@
 <?php
 namespace YUti\Dpmt\Chapter04;
 
-require_once __DIR__ . '/../../vendor/autoload.php';
-
 class List_04_02_SaverThread extends \Thread
 {
     private $name;

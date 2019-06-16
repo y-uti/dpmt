@@ -1,8 +1,6 @@
 <?php
 namespace YUti\Dpmt\Chapter02;
 
-require_once __DIR__ . '/../../vendor/autoload.php';
-
 final class List_02_01_Person extends \Threaded
 {
     private $name;

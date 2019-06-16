@@ -1,8 +1,6 @@
 <?php
 namespace YUti\Dpmt\Chapter06;
 
-require_once __DIR__ . '/../../vendor/autoload.php';
-
 use YUti\Dpmt\Common\Mutex;
 
 class List_06_11_Data extends \Threaded

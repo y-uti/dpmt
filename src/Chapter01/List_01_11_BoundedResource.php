@@ -1,8 +1,6 @@
 <?php
 namespace YUti\Dpmt\Chapter01;
 
-require_once __DIR__ . '/../../vendor/autoload.php';
-
 use YUti\Dpmt\Common\Semaphore;
 
 class List_01_11_BoundedResource

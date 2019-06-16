@@ -1,8 +1,6 @@
 <?php
 namespace YUti\Dpmt\Chapter03;
 
-require_once __DIR__ . '/../../vendor/autoload.php';
-
 class List_03_12_TalkThread extends \Thread
 {
     private $input;

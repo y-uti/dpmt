@@ -1,8 +1,6 @@
 <?php
 namespace YUti\Dpmt\Chapter06;
 
-require_once __DIR__ . '/../../vendor/autoload.php';
-
 class List_06_03_WriterThread extends \Thread
 {
     private $data;
