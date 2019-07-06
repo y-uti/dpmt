@@ -16,8 +16,10 @@ class List_08_03_Request extends \Threaded
     {
         $thread = \Thread::getCurrentThread();
 
-        echo "{$thread->getName()} execute $this\n";
-        usleep(1000 * rand(1, 1000));
+        if ($thread instanceof List_08_05_WorkerThread) {
+            echo "{$thread->getName()} execute $this\n";
+            usleep(1000 * rand(1, 1000));
+        }
     }
 
     public function __toString()

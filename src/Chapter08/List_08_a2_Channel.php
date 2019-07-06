@@ -20,7 +20,8 @@ class List_08_a2_Channel extends \Threaded
     private function putRequestImpl($request)
     {
         $t = new class($request, $this->number) extends \Thread {
-
+            private $request;
+            private $number;
             public function __construct($request, $number)
             {
                 $this->request = $request;

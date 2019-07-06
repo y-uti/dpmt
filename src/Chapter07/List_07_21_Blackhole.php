@@ -18,7 +18,6 @@ class List_07_21_Blackhole
     private static function magic($mutex)
     {
         $thread = new class($mutex) extends \Thread {
-
             private $mutex;
 
             public function __construct($mutex)
