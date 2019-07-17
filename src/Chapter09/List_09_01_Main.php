@@ -22,6 +22,8 @@ class List_09_01_Main
         echo "data2 = {$data2->getContent()}\n";
         echo "data3 = {$data3->getContent()}\n";
 
+        $host->shutdown();
+
         echo "main END\n";
     }
 }
